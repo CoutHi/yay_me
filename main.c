@@ -13,10 +13,8 @@ int is_monday(char time[]){
         if (needed[i] != time[i]){
             return 1;
         }
-        else {
-            return 0;
-        }
     }
+    return 0;
 }
 
 int main(){
