@@ -3,9 +3,9 @@ Description=Run update reminder for Monday
 After=network.target graphical.target
 
 [Service]
-ExecStart=/usr/bin/update_reminder
+Type=exec
+ExecStart=/usr/local/bin/update_reminder
 Restart=on-failure
-User=%u
 Environment=DISPLAY=:0
 Environment=%h/.Xauthority
 

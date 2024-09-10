@@ -12,10 +12,10 @@ $(TARGET): $(SRC)
 	$(CC) $(CFLAGS) $(SRC) -o $(TARGET) $(LIBS)
 
 install:
-	install -m 0755 $(TARGET) /usr/bin/$(TARGET)
-	cp $(SERVICE) /etc/systemd/system/
-	systemctl enable --now $(TARGET).service
+	install -m 0755 $(TARGET) /usr/local/bin/$(TARGET)
+	cp $(SERVICE) /etc/systemd/user/
+	systemctl --user enable --now $(TARGET).service
 
 clean:
-	systemctl disable --now update_reminder.service
-	rm -f /usr/bin/$(TARGET) /etc/systemd/system/$(TARGET).service
+	systemctl --user disable --now update_reminder.service
+	rm -f /usr/local/bin/$(TARGET) /etc/systemd/user/$(TARGET).service

@@ -24,6 +24,16 @@ This way, it'll run in the background.
 
 A systemd file is in the works to automate the running as well so you don't need to worry about anything.
 
-## KNOWN ISSUES
+### Disabling the daemon
+Run:
+```console
+systemctl --user disable --now update_reminder.service
+```
 
-- Systemd unit doesn't send notifications
+### Uninstallation
+
+Go to the git directory and run:
+
+```console
+sudo make clean
+```
