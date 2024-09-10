@@ -6,7 +6,13 @@ It simply sends you a notification that you might want to update every monday, t
 
 ### Installation
 
-Just copy the repo and run `sudo make install`, that's all.
+Just copy the repo and run: 
+```console
+make
+
+sudo make install
+```
+, that's all.
 
 ### Usage
 
