@@ -6,6 +6,11 @@
 #include <time.h>
 #include <locale.h>
 #include <libnotify/notify.h>
+#include <signal.h>
+
+#define EXT_SUCCESS 0
+
+char* notification_message = "It's Monday! You might want to update your system.";
 
 int is_monday(char time[]){
     char needed[4] = "Mon"; 
@@ -19,12 +24,20 @@ int is_monday(char time[]){
     return 0;
 }
 
+void graceful_exit(int signal){
+   notify_uninit(); 
+   printf("\nTerminated\n");
+   exit(EXT_SUCCESS);
+}
+
 int main(){
 
-     if (!notify_init("Update Reminder")) {
+    if (!notify_init("Update Reminder")) {
         fprintf(stderr, "Failed to initialize libnotify\n");
-        return 1;
+        exit(1);
     }   
+
+    signal(SIGINT, graceful_exit);
 
     while(1) {
 
@@ -34,12 +47,12 @@ int main(){
         char time_string[4];
 
         strftime(time_string, sizeof time_string, "%a", local);
-        printf("%s",time_string);
 
         if (is_monday(time_string) == 0){
-            NotifyNotification* notification = notify_notification_new("Update Reminder","It's Monday! You might want to update your system.",NULL);
+            NotifyNotification* notification = notify_notification_new("Update Reminder",notification_message, NULL);
             if(notification != NULL){
                 notify_notification_show(notification,NULL);
+                g_object_unref(G_OBJECT(notification));
             }
             else {
                 fprintf(stderr, "Failed to create notification!\n");
@@ -49,5 +62,5 @@ int main(){
         sleep(3600);
     }
     notify_uninit();
-    return 0;
+    exit(EXT_SUCCESS);
 }

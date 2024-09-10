@@ -17,4 +17,5 @@ install:
 	systemctl enable --now $(TARGET).service
 
 clean:
+	systemctl disable --now update_reminder.service
 	rm -f /usr/bin/$(TARGET) /etc/systemd/system/$(TARGET).service
