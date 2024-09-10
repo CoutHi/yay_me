@@ -1,0 +1,10 @@
+[Unit]
+Description=Run update reminder for Monday
+After=network.target graphical.target
+
+[Service]
+ExecStart=/usr/bin/update_reminder
+Restart=on-failure
+
+[Install]
+WantedBy=default.target
