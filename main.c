@@ -27,16 +27,9 @@ int main(){
         char time_string[4];
 
         strftime(time_string, sizeof time_string, "%a", local);
-        puts(time_string);
 
-        int status = is_monday(time_string);
-
-        switch (status) {
-            case 0:
-                system("notify-send \"It's Monday! You might want to update your system.\"");
-                break;
-            default:
-                break;
+        if (is_monday(time_string) == 0){
+            system("notify-send \"It's Monday! You might want to update your system.\"");
         }
 
         sleep(3600);
