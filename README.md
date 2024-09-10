@@ -12,11 +12,12 @@ make
 
 sudo make install
 ```
-, that's all.
+that's all.
 
 ### Usage
 
-You can do 
+It's handled automatically by systemd, but if you want to run it manually you can do:
+
 ```console
 update_reminder &
 ```
