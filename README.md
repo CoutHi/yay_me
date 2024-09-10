@@ -37,3 +37,5 @@ Go to the git directory and run:
 ```console
 sudo make clean
 ```
+
+## Please report any bugs you encounter
