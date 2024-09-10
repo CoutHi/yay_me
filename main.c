@@ -8,8 +8,6 @@
 #include <libnotify/notify.h>
 #include <signal.h>
 
-#define EXT_SUCCESS 0
-
 char* notification_message = "It's Monday! You might want to update your system.";
 
 int is_monday(char time[]){
@@ -34,7 +32,7 @@ int main(){
 
     if (!notify_init("Update Reminder")) {
         fprintf(stderr, "Failed to initialize libnotify\n");
-        exit(1);
+        exit(EXT_FAILURE);
     }   
 
     signal(SIGINT, graceful_exit);
