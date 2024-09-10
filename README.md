@@ -21,10 +21,6 @@ It's handled automatically by systemd, but if you want to run it manually you ca
 ```console
 update_reminder &
 ```
-This way, it'll run in the background. 
-
-A systemd file is in the works to automate the running as well so you don't need to worry about anything.
-
 ### Disabling the daemon
 Run:
 ```console
