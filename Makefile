@@ -2,9 +2,9 @@ CC = gcc
 CFLAGS = -Wall -g
 LIBS = `pkg-config --cflags --libs libnotify glib-2.0`
 
-TARGET = update_reminder
+TARGET = yay_me
 SRC = main.c
-SERVICE = update_reminder.service
+SERVICE = yay_me.service
 
 all: $(TARGET)
 
@@ -14,8 +14,8 @@ $(TARGET): $(SRC)
 install:
 	install -m 0755 $(TARGET) /usr/local/bin/$(TARGET)
 	cp $(SERVICE) /etc/systemd/user/
-	systemctl --user enable --now $(TARGET).service
+	systemctl --user enable --now $(SERVICE)
 
 clean:
-	rm -f /usr/local/bin/$(TARGET) ~/.config/systemd/user/$(TARGET).service
-	systemctl --user disable --now update_reminder.service
+	rm -f /usr/local/bin/$(TARGET) /etc/systemd/user/$(SERVICE)
+	systemctl --user disable --now $(SERVICE)

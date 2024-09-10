@@ -1,0 +1,13 @@
+[Unit]
+Description=Run update reminder for Monday
+After=network.target graphical.target
+
+[Service]
+Type=exec
+ExecStart=/usr/local/bin/yay_me
+Restart=on-failure
+Environment=DISPLAY=:0
+Environment=%h/.Xauthority
+
+[Install]
+WantedBy=default.target

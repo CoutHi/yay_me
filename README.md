@@ -1,4 +1,4 @@
-# Update_Reminder
+# yay_me()
 
 ### What is it?
 If you're like me and can't stop running the update command on your arch system every damn minute, maybe this program can help you.
@@ -19,12 +19,12 @@ that's all.
 It's handled automatically by systemd, but if you want to run it manually you can do:
 
 ```console
-update_reminder &
+yay_me &
 ```
 ### Disabling the daemon
 Run:
 ```console
-systemctl --user disable --now update_reminder.service
+systemctl --user disable --now yay_me.service
 ```
 
 ### Uninstallation
